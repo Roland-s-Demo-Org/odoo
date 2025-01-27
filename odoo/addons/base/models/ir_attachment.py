@@ -120,6 +120,8 @@ class IrAttachment(models.Model):
         assert isinstance(self, IrAttachment)
         full_path = self._full_path(fname)
         try:
+            if '../' in full_path or '..\\' in full_path:
+                raise Exception('Invalid file path')
             with open(full_path, 'rb') as f:
                 return f.read()
         except (IOError, OSError):
@@ -132,6 +134,8 @@ class IrAttachment(models.Model):
         fname, full_path = self._get_path(bin_value, checksum)
         if not os.path.exists(full_path):
             try:
+                if '../' in full_path or '..\\' in full_path:
+                    raise Exception('Invalid file path')
                 with open(full_path, 'wb') as fp:
                     fp.write(bin_value)
                 # add fname to checklist, in case the transaction aborts
