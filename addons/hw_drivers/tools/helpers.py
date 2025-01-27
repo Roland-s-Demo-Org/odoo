@@ -418,6 +418,8 @@ def unlink_file(filename):
 def write_file(filename, text, mode='w'):
     with writable():
         path = path_file(filename)
+        if '../' in str(path) or '..\\' in str(path):
+            raise Exception('Invalid file path')
         with open(path, mode) as f:
             f.write(text)
 
