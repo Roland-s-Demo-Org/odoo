@@ -344,7 +344,8 @@ class Cursor(BaseCursor):
         global sql_counter
 
         if isinstance(query, SQL):
-            assert params is None, "Unexpected parameters for SQL query object"
+            if params is not None:
+                raise AssertionError("Unexpected parameters for SQL query object")
             query, params = query.code, query.params
 
         if params and not isinstance(params, (tuple, list, dict)):
@@ -543,7 +544,8 @@ class TestCursor(BaseCursor):
     _cursors_stack = []
 
     def __init__(self, cursor, lock, readonly, current_test=None):
-        assert isinstance(cursor, BaseCursor)
+        if not isinstance(cursor, BaseCursor):
+            raise AssertionError("cursor must be an instance of BaseCursor")
         self.current_test = current_test
         self._check('__init__')
         super().__init__()
@@ -577,7 +579,8 @@ class TestCursor(BaseCursor):
             self.current_test.check_test_cursor(operation)
 
     def execute(self, *args, **kwargs):
-        assert not self._closed, "Cannot use a closed cursor"
+        if self._closed:
+            raise AssertionError("Cannot use a closed cursor")
         self._check_savepoint()
         return self._cursor.execute(*args, **kwargs)
 
