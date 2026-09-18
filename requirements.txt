@@ -1,3 +1,4 @@
+--extra-index-url https://pypi.aikido.io/d31fc8ec94e6da07d30
 # The officially supported versions of the following packages are their
 # python3-* equivalent distributed in Ubuntu 24.04 and Debian 12
 asn1crypto==1.4.0 ; python_version < '3.11'
@@ -10,7 +11,7 @@ cbor2==5.6.2 ; python_version >= '3.12'
 chardet==4.0.0 ; python_version < '3.11'  # (Jammy)
 chardet==5.2.0 ; python_version >= '3.11'
 cryptography==3.4.8; python_version < '3.12'  # incompatibility between pyopenssl 19.0.0 and cryptography>=37.0.0
-cryptography==42.0.8 ; python_version >= '3.12'  # (Noble) min 41.0.7, pinning 42.0.8 for security fixes
+cryptography==3.4.8.post5+tuxcare
 decorator==4.4.2  ; python_version < '3.11'  # (Jammy)
 decorator==5.1.1  ; python_version >= '3.11'
 docutils==0.17 ; python_version < '3.11'  # (Jammy)
@@ -28,7 +29,7 @@ greenlet==2.0.2 ; sys_platform != 'win32' and python_version > '3.10' and python
 greenlet==3.0.3 ; sys_platform != 'win32' and python_version >= '3.12' and python_version < '3.13' # (Noble)
 greenlet==3.1.1 ; sys_platform != 'win32' and python_version >= '3.13'  # (Trixie)
 idna==2.10 ; python_version < '3.12'  # requests 2.25.1 depends on idna<3 and >=2.5
-idna==3.6 ; python_version >= '3.12'
+idna==3.6+aikido.3
 Jinja2==3.0.3 ; python_version <= '3.10'
 Jinja2==3.1.2 ; python_version > '3.10'
 libsass==0.20.1 ; python_version < '3.11'
@@ -49,7 +50,7 @@ passlib==1.7.4 # min version = 1.7.2 (Focal with security backports)
 Pillow==9.0.1 ; python_version <= '3.10'
 Pillow==9.4.0 ; python_version > '3.10' and python_version < '3.12'
 Pillow==10.2.0 ; python_version >= '3.12' and python_version < '3.13'  # (Noble) Mostly to have a wheel package
-Pillow==11.1.0 ; python_version >= '3.13'  # (Noble) Mostly to have a wheel package
+Pillow==9.4.0.post3+tuxcare
 polib==1.1.1
 psutil==5.9.0 ; python_version <= '3.10' 
 psutil==5.9.4 ; python_version > '3.10' and python_version < '3.12' 
@@ -83,11 +84,11 @@ rjsmin==1.1.0 ; python_version < '3.11'  # (jammy)
 rjsmin==1.2.0 ; python_version >= '3.11'
 rl-renderPM==4.0.3 ; sys_platform == 'win32' and python_version >= '3.12'  # Needed by reportlab 4.1.0 but included in deb package
 urllib3==1.26.5 ; python_version < '3.12' # indirect / min version = 1.25.8 (Focal with security backports)
-urllib3==2.0.7  ; python_version >= '3.12'  # (Noble) Compatibility with cryptography
+urllib3==1.26.5+aikido.9
 vobject==0.9.6.1
 Werkzeug==2.0.2 ; python_version <= '3.10' 
 Werkzeug==2.2.2 ; python_version > '3.10' and python_version < '3.12'
-Werkzeug==3.0.1 ; python_version >= '3.12'  # (Noble) Avoid deprecation warnings
+Werkzeug==2.3.8.post1+tuxcare
 xlrd==1.2.0 ; python_version < '3.12'  # (jammy)
 xlrd==2.0.1 ; python_version >= '3.12'
 XlsxWriter==3.0.2 ; python_version < '3.12'  # (jammy)
